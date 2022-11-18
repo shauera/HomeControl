@@ -1,6 +1,6 @@
 {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
+  "name": "home-control-functions",
+  "description": "Drive IT controller from Google Smarthome Actions",
   "scripts": {
     "lint": "eslint",
     "serve": "firebase emulators:start --only functions",
@@ -14,8 +14,10 @@
   },
   "main": "index.js",
   "dependencies": {
-    "firebase-admin": "^10.0.2",
-    "firebase-functions": "^3.18.0"
+    "@google-cloud/pubsub": "^3.2.1",
+    "actions-on-google": "^3.0.0",
+    "firebase-admin": "^11.2.1",
+    "firebase-functions": "^4.0.2"
   },
   "devDependencies": {
     "eslint": "^8.9.0",

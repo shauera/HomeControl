@@ -1,0 +1,65 @@
+﻿[
+  {
+    "id": "1",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff",
+      "action.devices.traits.Brightness",
+      "action.devices.traits.ColorSetting"
+    ],
+    "name": {
+      "defaultNames": [
+        "Living Room Area"
+      ],
+      "name": "Living Room Area Light",
+      "nicknames": [
+        "Living Room Area"
+      ]
+    },
+    "deviceInfo": {
+      "manufacturer": "Shauer",
+      "model": "IR Light Controller",
+      "hwVersion": "1.0",
+      "swVersion": "1.0.1"
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false,
+      "commandOnlyColorSetting": false,
+      "commandOnlyBrightness": false,
+      "colorModel": "rgb",
+      "colorTemperatureRange": {
+        "temperatureMinK": 2000,
+        "temperatureMaxK": 6500
+      }
+    }
+  },
+  {
+    "id": "2",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff",
+      "action.devices.traits.Brightness"
+    ],
+    "name": {
+      "defaultNames": [
+        "My Test Light2"
+      ],
+      "name": "Light 2",
+      "nicknames": [
+        "Corridor Light"
+      ]
+    },
+    "deviceInfo": {
+      "manufacturer": "Siddhy Co",
+      "model": "Siddhys LED Bulb",
+      "hwVersion": "2.0",
+      "swVersion": "2.0.1"
+    },
+    "willReportState": true,
+    "attributes": {
+      "commandOnlyOnOff": false,
+      "commandOnlyBrightness": false
+    }
+  }
+]
