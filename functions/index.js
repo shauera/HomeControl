@@ -80,7 +80,7 @@ exports.publishHomeControlCommandEvent = functions.https.onRequest(async (req, r
   const topic = pubsub.topic('ControlCommands');
   
   const data = {
-    message: req.body.message
+    message: req.body.message,
   };
 
   // Publish message
@@ -371,6 +371,23 @@ app.onExecute(async (body) => {
       online: true,
     },
   };
+  //---------------------
+  // References an existing topic
+  const topic = pubsub.topic('ControlCommands');
+  
+  const data = {
+    message: JSON.stringify(body),
+  };
+
+  // Publish message
+  try {
+    functions.logger.info('EXECUTE-ABOUT-TO-PUBLISH')
+    await topic.publishMessage({json: data});
+    functions.logger.info('EXECUTE-PUBLISH')
+  } catch (err) {
+    functions.logger.error('EXECUTE-PUBLISH', err)    
+  }
+  //--------------------------
 
   const executePromises = [];
   const intent = body.inputs[0];
