@@ -1,3 +1,10 @@
+// Good tutorial and examples can be found here:
+// https://developers.home.google.com/codelabs/smarthome-washer#0
+// https://github.com/googlecodelabs/smarthome-washer/blob/master/washer-start/functions/index.js
+
+// In depth documentation about fulfillments can be found here:
+// https://developers.home.google.com/cloud-to-cloud/integration/sync
+
 // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.
 const functions = require('firebase-functions');
 
@@ -129,6 +136,10 @@ exports.login = functions.https.onRequest((request, response) => {
 
 
 const util = require('util');
+/**
+ * This is one of three functions that is setup as a webhook for Google assistant.
+ * It should authenticate the request coming from the Google assistant.
+ */
 exports.fakeauth = functions.https.onRequest((request, response) => {
   const responseurl = util.format('%s?code=%s&state=%s',
       decodeURIComponent(request.query.redirect_uri), 'xxxxxx',
@@ -138,6 +149,10 @@ exports.fakeauth = functions.https.onRequest((request, response) => {
       `/login?responseurl=${encodeURIComponent(responseurl)}`);
 });
 
+/**
+ * This is one of three functions that is setup as a webhook for Google assistant.
+ * It should grant an authorization code to Google assistant.
+ */
 exports.faketoken = functions.https.onRequest((request, response) => {
   const grantType = request.query.grant_type ?
     request.query.grant_type : request.body.grant_type;
@@ -420,8 +435,17 @@ app.onDisconnect((body, headers) => {
   return {};
 });
 
+/**
+ * This is one of three functions that is setup as a webhook for Google assistant.
+ * Passing in `app` will setup all
+ * the required callbacks (Sync, Query, Disconnect, and Execute)
+ */
 exports.smarthome = functions.https.onRequest(app);
 
+/**
+ * This should be called by a cilent that wants to request the assistant to resync e.g.
+ * when a new device was added and the assistant is not aware of it yet.
+ */
 exports.requestsync = functions.https.onRequest(async (request, response) => {
   response.set('Access-Control-Allow-Origin', '*');
   functions.logger.info('Request SYNC for user ${USER_ID}');
@@ -437,7 +461,9 @@ exports.requestsync = functions.https.onRequest(async (request, response) => {
 
 /**
  * Send a REPORT STATE call to the homegraph when data for any device id
- * has been changed.
+ * has been changed. This should be called by a cilent that wants to report back the state
+ * of a device that my have changed not throug the Google assistant e.g. a light was turned on
+ * using a manual switch.
  */
  exports.reportstate = functions.database.ref('{deviceId}').onWrite(async (change, context) => {
   functions.logger.info('Firebase write event triggered this cloud function');
