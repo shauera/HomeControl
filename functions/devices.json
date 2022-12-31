@@ -3,9 +3,47 @@
     "id": "1",
     "type": "action.devices.types.LIGHT",
     "traits": [
-      "action.devices.traits.OnOff",
-      "action.devices.traits.Brightness",
-      "action.devices.traits.ColorSetting"
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "All lights"
+      ],
+      "name": "All lights",
+      "nicknames": [
+        "All lights"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "3",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Living Room Area"
+      ],
+      "name": "Living Room Spot Lights",
+      "nicknames": [
+        "Living Room Spots"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "4",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
     ],
     "name": {
       "defaultNames": [
@@ -16,50 +54,191 @@
         "Living Room Area"
       ]
     },
-    "deviceInfo": {
-      "manufacturer": "Shauer",
-      "model": "IR Light Controller",
-      "hwVersion": "1.0",
-      "swVersion": "1.0.1"
-    },
     "willReportState": false,
     "attributes": {
-      "commandOnlyOnOff": false,
-      "commandOnlyColorSetting": false,
-      "commandOnlyBrightness": false,
-      "colorModel": "rgb",
-      "colorTemperatureRange": {
-        "temperatureMinK": 2000,
-        "temperatureMaxK": 6500
-      }
+      "commandOnlyOnOff": false
     }
   },
   {
-    "id": "2",
+    "id": "5",
     "type": "action.devices.types.LIGHT",
     "traits": [
-      "action.devices.traits.OnOff",
-      "action.devices.traits.Brightness"
+      "action.devices.traits.OnOff"
     ],
     "name": {
       "defaultNames": [
-        "My Test Light2"
+        "Kitchen"
       ],
-      "name": "Light 2",
+      "name": "Kitchen",
       "nicknames": [
-        "Corridor Light"
+        "Kitchen"
       ]
     },
-    "deviceInfo": {
-      "manufacturer": "Siddhy Co",
-      "model": "Siddhys LED Bulb",
-      "hwVersion": "2.0",
-      "swVersion": "2.0.1"
-    },
-    "willReportState": true,
+    "willReportState": false,
     "attributes": {
-      "commandOnlyOnOff": false,
-      "commandOnlyBrightness": false
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "6",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Entrance"
+      ],
+      "name": "Entrance",
+      "nicknames": [
+        "Entrance"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "7",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Balcony"
+      ],
+      "name": "Living Room Area Light",
+      "nicknames": [
+        "Porch"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "8",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Bedroom"
+      ],
+      "name": "Bedroom Light",
+      "nicknames": [
+        "Bedroom"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "9",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Bedroom Night"
+      ],
+      "name": "Bedroom Night Light",
+      "nicknames": [
+        "Bedroom Night"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "10",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Shower"
+      ],
+      "name": "Shower Light",
+      "nicknames": [
+        "Shower"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "11",
+    "type": "action.devices.types.LIGHT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Toilet"
+      ],
+      "name": "Toilet Light",
+      "nicknames": [
+        "Toilet"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "20",
+    "type": "action.devices.types.AC_UNIT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Main AC"
+      ],
+      "name": "Main AC",
+      "nicknames": [
+        "Livingroom AC",
+        "Livingroom Air Conditioner"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
+    }
+  },
+  {
+    "id": "21",
+    "type": "action.devices.types.AC_UNIT",
+    "traits": [
+      "action.devices.traits.OnOff"
+    ],
+    "name": {
+      "defaultNames": [
+        "Bedroom AC"
+      ],
+      "name": "Bedroom AC",
+      "nicknames": [
+        "Bedroom AC",
+        "Bedroom Air Conditioner"
+      ]
+    },
+    "willReportState": false,
+    "attributes": {
+      "commandOnlyOnOff": false
     }
   }
 ]

@@ -69,7 +69,7 @@ exports.makeUppercase = functions.firestore.document('/messages/{documentId}')
       return snap.ref.set({uppercase}, {merge: true});
     });
 
-
+// Publish a message directly to a topic. Use postman for this.
 exports.publishHomeControlCommandEvent = functions.https.onRequest(async (req, res) => {
   console.log(`---------- body: ${JSON.stringify(req.body)}`);
   if (!req.body.message) {
@@ -179,38 +179,17 @@ exports.faketoken = functions.https.onRequest((request, response) => {
       .json(obj);
 });
 
-let devicelist
-devicelist = require('./devices.json')
+let devicelist = require('./devices.json')
 const deviceitems = JSON.parse(JSON.stringify(devicelist));
 
-var devicecounter;
 
+// create devices in database and return the list of devices as it appears in the devicelist file
+// https://developers.home.google.com/cloud-to-cloud/integration/sync#sync-response
 app.onSync((body) => {
   functions.logger.log('onSync');
-  for (devicecounter = 0; devicecounter < deviceitems.length; devicecounter++) {
-    if (deviceitems[devicecounter].traits.includes('action.devices.traits.TemperatureSetting')) {
-      if (deviceitems[devicecounter].attributes.queryOnlyTemperatureSetting == true) {
-        firebaseRef.child(deviceitems[devicecounter].id).child('TemperatureSetting').set({thermostatMode: "off", thermostatTemperatureAmbient: 20, thermostatHumidityAmbient: 90});
-      } else if (deviceitems[devicecounter].attributes.queryOnlyTemperatureSetting == false) {
-        firebaseRef.child(deviceitems[devicecounter].id).child('TemperatureSetting').set({thermostatMode: "off", thermostatTemperatureSetpoint: 25.5, thermostatTemperatureAmbient: 20, thermostatHumidityAmbient: 90, thermostatTemperatureSetpointLow: 15, thermostatTemperatureSetpointHigh: 30});
-      }
-    }
+  for (let devicecounter = 0; devicecounter < deviceitems.length; devicecounter++) {
     if (deviceitems[devicecounter].traits.includes('action.devices.traits.OnOff')) {
       firebaseRef.child(deviceitems[devicecounter].id).child('OnOff').set({on: false});
-    }
-    if (deviceitems[devicecounter].traits.includes('action.devices.traits.Brightness')) {
-      firebaseRef.child(deviceitems[devicecounter].id).child('Brightness').set({brightness: 10});
-    }
-    if (deviceitems[devicecounter].traits.includes('action.devices.traits.ColorSetting')) {
-      firebaseRef.child(deviceitems[devicecounter].id).child('ColorSetting').set({color: {name: "deep sky blue", spectrumRGB: 49151}});
-    }
-    if (deviceitems[devicecounter].traits.includes('action.devices.traits.Modes')) {
-      var modename = deviceitems[devicecounter].attributes.availableModes[0].name
-      var modevalue = deviceitems[devicecounter].attributes.availableModes[0].settings[0].setting_name
-      firebaseRef.child(deviceitems[devicecounter].id).child('Modes').set({currentModeSettings: {modename: modevalue}});
-    }
-    if (deviceitems[devicecounter].traits.includes('action.devices.traits.FanSpeed')) {
-      firebaseRef.child(deviceitems[devicecounter].id).child('FanSpeed').set({currentFanSpeedSetting: 20.0});
     }
   }
   return {

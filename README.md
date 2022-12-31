@@ -58,6 +58,6 @@ in actions UI
     Token URL               : https://us-central1-<project-id>.cloudfunctions.net/faketoken  
 in VScode add mandatory functions to index.js in order to fullfil the action
 - npm install actions-on-google --save-prod
-- The fullfilment in this project is mainly through the `smarthome` function. Its link is the one to paste in the fullfilment url
+- The fullfilment is exposed through the `smarthome` function. The function link must be pasted in the fullfilment url
 
 Note: for the `firestore database` I had to create a key to the `Firebase admin sdk` service account and load that key into the `admin.initializeApp`. That gives the functions access to te database.
